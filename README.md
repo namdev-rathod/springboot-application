@@ -1,6 +1,6 @@
 # Deploy Springboot Application
 ## Result
-<Add Output Image>
+![image](image.png)
 
 ## 1. Run in the Local
 ### Requirement

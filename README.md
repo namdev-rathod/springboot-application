@@ -47,6 +47,10 @@ Building and Running the Docker Image
 
         docker build -t namdevnmr/spring-boot-app:latest .
 
+Pushing the Docker Image
+
+        docker push namdevnmr/spring-boot-app:latest       
+
 Run the Docker Container:
 
         docker run -d -p 8080:8080 namdevnmr/spring-boot-app:latest

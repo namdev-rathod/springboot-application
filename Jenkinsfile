@@ -5,7 +5,7 @@ pipeline {
         maven 'maven3'
     }
     environment {
-        SCANNER_HOME = 'sonar-scanner'
+        SCANNER_HOME = tool 'sonar-scanner'
     }
 
     stages {
@@ -64,7 +64,7 @@ pipeline {
         stage('Docker Push Image') {
             steps {
                 script{
-                    withDockerRegistry(credentialsId: 'dockerhub') {
+                    withDockerRegistry(credentialsId: 'DockerHub') {
                         sh "docker push namdevnmr/spring-boot-app:latest"
                   }
                 }
@@ -72,7 +72,7 @@ pipeline {
         }
         stage('Deploy on Container') {
             steps {
-                sh "docker run -d -p 8080:8080 namdevnmr/spring-boot-app:latest"
+                sh "docker run -d -p 8090:8080 namdevnmr/spring-boot-app:latest"
             }
         }
     }

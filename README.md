@@ -55,9 +55,7 @@ Run the Docker Container:
 
         docker run -d -p 8080:8080 namdevnmr/spring-boot-app:latest
 
-# Jenkins file for Docker deployment Auto stop/terminate & deployment of container with latest changes.
-Note: 
-No need to stop and kill existing docker container. this pipeline will take care automatically.
+# Jenkins File To Deploy Docker Container.
 
 ```
 pipeline {

@@ -70,9 +70,20 @@ pipeline {
                 }
             }
         }
-        stage('Deploy on Container') {
-            steps {
-                sh "docker run -d -p 8090:8080 namdevnmr/spring-boot-app:latest"
+        // stage('Deploy on Container') {
+        //     steps {
+        //         sh "docker run -d -p 8090:8080 namdevnmr/spring-boot-app:latest"
+        //     }
+        // }
+
+        	stage('Deploy to kubernets'){
+                steps{
+                    script{
+                        withKubeConfig(caCertificate: '', clusterName: 'EKS_CLOUD', contextName: '', credentialsId: 'k8s', namespace: 'default', restrictKubeConfigAccess: false, serverUrl: 'https://B18E12BF81A02624B83DD385816C9EF6.gr7.ap-south-1.eks.amazonaws.com') {
+                            sh "kubectl apply -f deployment.yaml"
+                            sh "kubectl apply -f service.yaml"
+                    }
+                }
             }
         }
     }

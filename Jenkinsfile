@@ -79,7 +79,7 @@ pipeline {
         	stage('Deploy to kubernets'){
                 steps{
                     script{
-                        withKubeConfig(caCertificate: '', clusterName: 'EKS_CLOUD', contextName: '', credentialsId: 'k8s', namespace: 'default', restrictKubeConfigAccess: false, serverUrl: 'https://B18E12BF81A02624B83DD385816C9EF6.gr7.ap-south-1.eks.amazonaws.com') {
+                        withKubeConfig(caCertificate: '', clusterName: 'EKS_CLOUD_DEMO', contextName: '', credentialsId: 'k8skey', namespace: 'default', restrictKubeConfigAccess: false, serverUrl: 'https://DADC05496E69DA7E44F778B5575347D4.gr7.ap-south-1.eks.amazonaws.com') {
                             sh "kubectl apply -f deployment.yaml"
                             sh "kubectl apply -f service.yaml"
                     }

@@ -53,26 +53,26 @@ pipeline {
         }
         stage('Docker build and tag') {
             steps {
-                sh "docker build -t namdevnmr/spring-boot-app:latest ."
+                sh "docker build -t namdevnmr/springboot-app:latest ."
             }
         }
         stage('Trivy image Scan') {
             steps {
-                sh "trivy image namdevnmr/spring-boot-app:latest --format table -o image.html"
+                sh "trivy image namdevnmr/springboot-app:latest --format table -o image.html"
             }
         }
         stage('Docker Push Image') {
             steps {
                 script{
                     withDockerRegistry(credentialsId: 'DockerHub') {
-                        sh "docker push namdevnmr/spring-boot-app:latest"
+                        sh "docker push namdevnmr/springboot-app:latest"
                   }
                 }
             }
         }
         // stage('Deploy on Container') {
         //     steps {
-        //         sh "docker run -d -p 8090:8080 namdevnmr/spring-boot-app:latest"
+        //         sh "docker run -d -p 8090:8080 namdevnmr/springboot-app:latest"
         //     }
         // }
 

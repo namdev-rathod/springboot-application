@@ -7,7 +7,7 @@ on:
 
 env:
   AWS_REGION: "ap-south-1"
-  CLUSTER_NAME: "my-eks-cluster"
+  CLUSTER_NAME: "EKS_CLOUD_DEMO"
   K8S_NAMESPACE: "default"
 
 jobs:

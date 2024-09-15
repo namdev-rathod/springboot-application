@@ -76,7 +76,7 @@ jobs:
 
     - name: Apply Nginx Deployment to Kubernetes
       run: |
-        kubectl apply -f k8s/deployment.yaml --namespace ${{ env.K8S_NAMESPACE }}
+        kubectl apply -f deployment.yaml --namespace ${{ env.K8S_NAMESPACE }}
 
     - name: Verify Nginx Deployment
       run: |

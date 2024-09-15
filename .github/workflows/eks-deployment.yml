@@ -72,7 +72,7 @@ jobs:
 
     - name: Configure kubeconfig for EKS
       run: |
-        aws eks update-kubeconfig --name ${{ env.CLUSTER_NAME }} --region ${{ env.AWS_REGION }}
+        aws eks update-kubeconfig --name demo-cluster --region ${{ env.AWS_REGION }}
 
     - name: Apply Nginx Deployment to Kubernetes
       run: |

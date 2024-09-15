@@ -31,6 +31,9 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
 
+    - name: Verify AWS Credentials
+      run: aws sts get-caller-identity    
+
     - name: Initialize Terraform
       working-directory: EKS-Cluster
       run: terraform init

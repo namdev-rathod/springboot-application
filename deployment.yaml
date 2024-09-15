@@ -1,22 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: springboot-app
+  name: nginx-deployment
   labels:
-    app: springboot-app
+    app: nginx
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: springboot-app
+      app: nginx
   template:
     metadata:
       labels:
-        app: springboot-app
+        app: nginx
     spec:
       containers:
-      - name: springboot-app
-        image: namdevnmr/springboot-app:latest
+      - name: nginx
+        image: nginx:1.19.10
         ports:
-        - containerPort: 8080
-
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+  selector:
+    app: nginx
